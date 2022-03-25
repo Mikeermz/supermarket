@@ -1,3 +1,6 @@
 [submodule "supermarket_api"]
 	path = supermarket_api
 	url = git@github.com:Mikeermz/supermarket_api.git
+[submodule "supermarket_client"]
+	path = supermarket_client
+	url = git@github.com:Mikeermz/supermarket_client.git
