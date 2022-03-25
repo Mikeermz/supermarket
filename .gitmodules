@@ -1,0 +1,3 @@
+[submodule "supermarket_api"]
+	path = supermarket_api
+	url = git@github.com:Mikeermz/supermarket_api.git
