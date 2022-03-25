@@ -1,0 +1,33 @@
+version: '3'
+services:
+  supermarket-api:
+    container_name: supermarket_api
+    tty: true # Enables debugging capabilities when attached to this container.
+    image: 'node:11.15.0'
+    volumes:
+      - /supermarket_api/node_modules
+      - ./supermarket_api:/supermarket_api
+    working_dir: /supermarket_api
+    command: sh -c 'npm install && npm start'
+    build: .
+    env_file:
+      - ./supermarket_api/.env
+    depends_on:
+      - mongo-super
+    ports:
+      - 8000:8000
+  mongo-super:
+    container_name: mongo-super
+    image: 'bitnami/mongodb:4.0'
+    ports:
+      - "27019:27017"
+    volumes:
+      - db_data:/bitnami
+    restart: always
+networks:
+  default:
+    external:
+      name: developnet
+volumes:
+  db_data:
+    driver: local
